@@ -20,17 +20,17 @@ class MLP(nn.Module):
 		self.feat_net = Net_HM_Feat(num_heatmap_chan, num_feat_chan, size_input_feature)
 		self.bn1 = nn.BatchNorm1d(4096)
 		self.drop1 = nn.Dropout(0.3)
-		self.fc1 = nn.Linear(4096, 1024)
-		self.bn2 = nn.BatchNorm1d(1024)
-		self.drop2 = nn.Dropout(0.4)
-		self.fc2 = nn.Linear(1024, 256)
+		self.fc1 = nn.Linear(4096, 2048)
+		self.bn2 = nn.BatchNorm1d(2048)
+		self.drop2 = nn.Dropout(0.3)
+		self.fc2 = nn.Linear(2048, 256)
 		self.bn3 = nn.BatchNorm1d(256)
 		self.drop3 = nn.Dropout(0.5)
 		self.fc3 = nn.Linear(256, 20)
 
-		nn.init.xavier_normal_(self.fc1.weight, gain=nn.init.calculate_gain('relu'))
-		nn.init.xavier_normal_(self.fc2.weight, gain=nn.init.calculate_gain('relu'))
-		nn.init.xavier_normal_(self.fc3.weight, gain=nn.init.calculate_gain('relu'))
+		# nn.init.xavier_normal_(self.fc1.weight, gain=nn.init.calculate_gain('relu'))
+		# nn.init.xavier_normal_(self.fc2.weight, gain=nn.init.calculate_gain('relu'))
+		# nn.init.xavier_normal_(self.fc3.weight, gain=nn.init.calculate_gain('relu'))
 
 	def forward(self, hm_list, encoding_list):
 		x = self.feat_net(hm_list, encoding_list)
@@ -44,7 +44,7 @@ class MLP(nn.Module):
 		x = self.fc2(x)
 		x = self.bn3(x)
 		x = F.relu(x)
-		x = self.drop3(x)
+		# x = self.drop3(x)
 		x = self.fc3(x)
 
 		return x
