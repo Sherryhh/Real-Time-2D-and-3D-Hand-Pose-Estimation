@@ -71,7 +71,7 @@ def main():
     hm_loss = nn.MSELoss(reduction='sum')
 
     print('Entering loop...')
-    num_epoch = 200
+    num_epoch = 20
     for epoch in range(num_epoch):
         total_loss_train = 0.0
         tic = time.time()
