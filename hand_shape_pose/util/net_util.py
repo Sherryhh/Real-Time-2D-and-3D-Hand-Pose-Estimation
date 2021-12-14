@@ -95,6 +95,7 @@ class my_sparse_mm(torch.autograd.Function):
 
 
 def load_net_model(model_path, net):
+    if not osp.isfile(model_path): return 0
     assert (osp.isfile(model_path)), ('The model does not exist! Error path:\n%s' % model_path)
 
     model_dict = torch.load(model_path, map_location='cpu')
