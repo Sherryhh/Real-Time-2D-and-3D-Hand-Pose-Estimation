@@ -68,7 +68,7 @@ def main():
     #optimizer = optim.Adam(model.mlp.parameters(), lr=0.00001)
     pose_loss = nn.MSELoss(reduction='sum')
 
-    num_epoch = 20
+    num_epoch = 200
     for epoch in range(num_epoch):
 
         # reduce learning rate every 50 epoch
