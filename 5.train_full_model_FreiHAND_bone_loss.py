@@ -64,7 +64,7 @@ def main():
     hm_loss = nn.MSELoss(reduction='sum')
     pose_loss = nn.MSELoss(reduction='sum')
 
-    num_epoch = 400
+    num_epoch = 200
     for epoch in range(num_epoch):
 
         # reduce learning rate every 50 epoch
