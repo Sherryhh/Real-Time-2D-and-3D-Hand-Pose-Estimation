@@ -1,22 +1,9 @@
-## Real-Time 2D and 3D Hand Pose Estimation from RGB Image
-
-<p align="center">
-  <img src=pose_estimation_gif.gif/>
-</p>
-
-<p align="center">
-  <img src=pose_estimate.jpg/>
-</p>
+## 2D and 3D Hand Pose Estimation from RGB Image
 
 
-### Introduction
-This is a CSCI 5561 course project done by Eng Hock Lee and Chih-Tien Kuo. 
-This project aimed to improve the existing work by [Ge et al.](https://github.com/3d-hand-shape/hand-graph-cnn) [1]. 
 Specifically, we seeked to improve upon their method of 3D hand pose estimation by introducing
 a biologically inspired loss function to further enhance the machine learning model generalization. 
 Furthermore, we intended to resolve the issue of image occlusion by utilizing [FreiHAND dataset](https://github.com/lmb-freiburg/freihand):
-a new public available hand dataset which contain images with hand occlusion.
-More information about the implementation and result can be found in the report/CSCI5561_Final_Report_3D_Hand_Pose_Estimation.pdf.
 
 
 ### Installation
@@ -50,26 +37,7 @@ Pre-trained models can be found in ${HAND_ROOT}$/model/FreiHAND_BoneLoss_models.
     python 1.train_hg_FreiHAND_baseline2.py --config-file "configs/train_FreiHAND_dataset.yaml"
     ```
 
-For Baseline2 model:
-
-4. Train the MLP without bone loss:
-    ```
-    python 2.train_mlp_FreiHAND_baseline2.py --config-file "configs/train_FreiHAND_dataset.yaml"
-    ```
-
-5. Train the full model without bone loss:
-    ```
-    python 3.train_full_model_FreiHAND_baseline2.py --config-file "configs/train_FreiHAND_dataset.yaml"
-    ```
-
-For our proposed model:
-
-4. Train the MLP with bone loss:
-    ```
-    python 4.train_mlp_FreiHAND_bone_loss.py --config-file "configs/train_FreiHAND_dataset.yaml"
-    ```
-
-5. Train the full model with bone loss:
+4. Train proposed model:
     ```
     python 5.train_full_model_FreiHAND_bone_loss.py --config-file "configs/train_FreiHAND_dataset.yaml"
     ```
@@ -78,28 +46,9 @@ For each step, the trained model weights (mlp.pth and net_hm.pth) will be locate
 ${HAND_ROOT}/model/FreiHAND_separate_trained_models before the next step.
 
 
-#### Real-time hand pose estimation
-1. Obtain the intrinsic camera parameter K by going through ${HAND_ROOT}$/camera_parameter_K folder.
 
-2. Run 7.real_time_3D_handpose_estimation.py:
-   ```
-   python 7.real_time_3D_handpose_estimation.py --config-file "configs/eval_webcam.yaml"
-   ```
-
-### Limitation
-1. The trained model only utilized 15% of the FreiHAND dataset (due to limited computing capacity). Therefore, it is possible the model can 
-achieve better hand pose estimation if more data is used. 
-
-2. We found that the hand pose estimation work best when the hand is positioned at the center of the image, and failed when the hand is not 
-at the center. This can be explained by the fact that all hand images in FreiHAND dataset are positioned at the center of the images. 
-
-3. We also found that the the model work best when the hand is at the certain depth position relative to the camera. If the hand is too close
-or too far from the camera the model will failed to estimate the hand pose. The can also be explained by the FreiHAND dataset, where all the 
-images contain similar hand size.
-
-
-### Citation
-[1] Ge, Liuhao, et al. “3d hand shape and pose estimation from a single rgb image.” Proceedings of the IEEE
-conference on computer vision and pattern recognition. 2019.
+#### Credit
+Thanks to Eng Hock Lee and Chih-Tien Kuo's idea on [github](https://github.com/enghock1/Real-Time-2D-and-3D-Hand-Pose-Estimation)
+This project aimed to improve the existing work by [Ge et al.](https://github.com/3d-hand-shape/hand-graph-cnn) 
 
 

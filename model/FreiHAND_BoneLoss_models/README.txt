@@ -1,1 +1,0 @@
-Finetuned model for proposed bone loss method using FreiHAND dataset.

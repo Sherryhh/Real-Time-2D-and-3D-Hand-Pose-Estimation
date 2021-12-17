@@ -1,1 +1,0 @@
-Folder used to store model weights during the model training.
