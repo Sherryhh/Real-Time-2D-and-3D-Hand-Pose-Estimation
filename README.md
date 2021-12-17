@@ -1,9 +1,8 @@
 ## 2D and 3D Hand Pose Estimation from RGB Image
 
+### Data 
 
-Specifically, we seeked to improve upon their method of 3D hand pose estimation by introducing
-a biologically inspired loss function to further enhance the machine learning model generalization. 
-Furthermore, we intended to resolve the issue of image occlusion by utilizing [FreiHAND dataset](https://github.com/lmb-freiburg/freihand):
+[FreiHAND dataset](https://github.com/lmb-freiburg/freihand):
 
 
 ### Installation
